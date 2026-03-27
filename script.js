@@ -4,13 +4,13 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let gradientOffset = 0;
+let hue = 0;
 
 function drawGradient() {
-  gradientOffset += 0.5;
+  hue += 0.5; // slowly shift hue
   const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  gradient.addColorStop(0, `hsl(${gradientOffset % 360}, 80%, 50%)`);
-  gradient.addColorStop(1, `hsl(${(gradientOffset + 60) % 360}, 80%, 50%)`);
+  gradient.addColorStop(0, `hsl(${hue % 360}, 80%, 50%)`);
+  gradient.addColorStop(1, `hsl(${(hue + 60) % 360}, 80%, 50%)`);
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -19,7 +19,7 @@ function drawGradient() {
 const particles = [];
 const particleCount = 80;
 
-for(let i = 0; i < particleCount; i++) {
+for (let i = 0; i < particleCount; i++) {
   particles.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
@@ -34,10 +34,10 @@ function drawParticles() {
     p.x += p.speedX;
     p.y += p.speedY;
 
-    if(p.x < 0) p.x = canvas.width;
-    if(p.x > canvas.width) p.x = 0;
-    if(p.y < 0) p.y = canvas.height;
-    if(p.y > canvas.height) p.y = 0;
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width) p.x = 0;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.y > canvas.height) p.y = 0;
 
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
