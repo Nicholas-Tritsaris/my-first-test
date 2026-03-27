@@ -1,19 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap');
 
 body {
-  background-color: #0d0d0d;
+  margin: 0;
+  background: #0d0d0d;
   color: #eaeaea;
   font-family: 'Inter', sans-serif;
-  height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 .container {
@@ -22,12 +21,13 @@ body {
 
 h1 {
   font-size: 3rem;
-  font-weight: 600;
-  letter-spacing: -1px;
+  transition: 0.3s;
+}
+
+h1:hover {
+  color: #4da6ff;
 }
 
 p {
-  margin-top: 10px;
-  font-size: 1.1rem;
   color: #aaa;
 }
